@@ -63,7 +63,7 @@ Or if you have trouble, make the following additions to the given files manually
 
 ```gradle
 include ':react-native-video'
-project(':react-native-video').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-video/android')
+project(':react-native-video').projectDir = new File(rootProject.projectDir, '../node_modules/@leefecu/react-native-video/android')
 ```
 
 **android/app/build.gradle**
