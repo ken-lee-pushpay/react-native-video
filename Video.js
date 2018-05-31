@@ -16,6 +16,7 @@ export default class Video extends Component {
     super(props);
 
     this.state = {
+      fullscreen: this.props.fullscreen,
       showPoster: true,
     };
   }
@@ -31,10 +32,12 @@ export default class Video extends Component {
   };
 
   presentFullscreenPlayer = () => {
+    this.setState({ fullscreen: true });
     this.setNativeProps({ fullscreen: true });
   };
 
   dismissFullscreenPlayer = () => {
+    this.setState({ fullscreen: false });
     this.setNativeProps({ fullscreen: false });
   };
 
@@ -183,7 +186,7 @@ export default class Video extends Component {
       nativeResizeMode = NativeModules.UIManager.RCTVideo.Constants.ScaleNone;
     }
 
-    const nativeProps = Object.assign({}, this.props);
+    const nativeProps = Object.assign({}, this.props, { fullscreen: this.state.fullscreen });
     Object.assign(nativeProps, {
       style: [styles.base, nativeProps.style],
       resizeMode: nativeResizeMode,
